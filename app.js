@@ -12,11 +12,23 @@ console.log(`Command: ${command}`);
 
 switch (command) {
 	case 'add':
-		notes.addNote(argv.title, argv.body);
+		const note = notes.addNote(argv.title, argv.body);
+
+		if (note) {
+			console.log('Note successfully added!');
+		} else {
+			console.log('Note already exists');
+		}
 		break;
 
 	case 'remove':
-		notes.removeNote(argv.title);
+		const removed = notes.removeNote(argv.title);
+
+		if (removed) {
+			console.log(`Note was removed.`);
+		} else {
+			console.log(`No note found for a given title`);
+		}
 		break;
 
 	case 'read':
